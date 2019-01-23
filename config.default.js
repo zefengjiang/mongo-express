@@ -4,6 +4,8 @@ var mongo = {
   // setting the connection string will only give access to that database
   // to see more databases you need to set mongodb.admin to true or add databases to the mongodb.auth list
   connectionString: process.env.ME_CONFIG_MONGODB_SERVER ? '' : process.env.ME_CONFIG_MONGODB_URL,
+  host: '127.0.0.1',
+  port: 27017
 };
 
 // Accesing Bluemix variable to get MongoDB info
@@ -45,7 +47,7 @@ module.exports = {
     //set admin to true if you want to turn on admin features
     //if admin is true, the auth list below will be ignored
     //if admin is true, you will need to enter an admin username/password below (if it is needed)
-    admin: process.env.ME_CONFIG_MONGODB_ENABLE_ADMIN ? process.env.ME_CONFIG_MONGODB_ENABLE_ADMIN.toLowerCase() === 'true' : false,
+    admin: process.env.ME_CONFIG_MONGODB_ENABLE_ADMIN ? process.env.ME_CONFIG_MONGODB_ENABLE_ADMIN.toLowerCase() === 'true' : true,
 
     // >>>>  If you are using regular accounts, fill out auth details in the section below
     // >>>>  If you have admin auth, leave this section empty and skip to the next section
@@ -72,7 +74,7 @@ module.exports = {
     whitelist: [],
 
     //blacklist: hide databases listed in the blacklist (empty list for no blacklist)
-    blacklist: [],
+    blacklist: ['admin', 'config', 'local'],
   },
 
   site: {
@@ -143,7 +145,7 @@ module.exports = {
     logger: {},
 
     //confirmDelete: if confirmDelete is set to 'true', a modal for confirming deletion is displayed before deleting a document/collection
-    confirmDelete: false,
+    confirmDelete: true,
 
     //noExport: if noExport is set to true, we won't show export buttons
     noExport: false,
