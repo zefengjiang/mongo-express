@@ -1,3 +1,15 @@
+# 0.51.1 - Sun Jan 13, 2019
+
+Fix:
+- Cast Selection object to a string to compare with exact equality
+
+
+# 0.51.0 - Sun Jan 13, 2019
+
+New:
+- Don't enter in edit mode with selection. [(#451)](https://github.com/mongo-express/mongo-express/pull/451)
+
+
 # 0.50.0 - Sun Dec 16, 2018
 
 New:
